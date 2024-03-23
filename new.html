@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<h2>Exer#11</h2>
+
+Enter your age: <input type="text" id="ageInput">
+<input type="button" onclick="findAgeGroup()" value="submit">
+<p id="result">Your age group is:</p>
+
+<script>
+function findAgeGroup() {
+    var age = parseInt(document.getElementById("ageInput").value);
+    var result = document.getElementById("result");
+
+    result.innerHTML = "Your age group is: ";
+
+    if (age >= 0 && age <= 12) {
+        result.innerHTML += "child";
+    } else if (age >= 13 && age <= 19) {
+        result.innerHTML += "teenager";
+    } else if (age >= 20 && age <= 59) {
+        result.innerHTML += "adult";
+    } else if (age >= 60) {
+        result.innerHTML += "senior";
+    } else {
+        result.innerHTML += "unknown";
+    }
+}
+</script>
+
+<h2>Exer#12</h2>
+
+Enter three integers separated by spaces: <input type="text" id="numbers1">
+<button onclick="findLargestInteger()">submit</button>
+<p id="result-1"></p>
+
+<script>
+function findLargestInteger() {
+    var input = document.getElementById("numbers1").value.trim();
+    var numbers = input.split(" ").map(Number);
+
+    var resultElement = document.getElementById("result-1");
+
+    if (numbers.length !== 3 || numbers.some(isNaN)) {
+        resultElement.textContent = "Please enter three valid integers separated by spaces.";
+        return;
+    }
+
+    var largest = numbers[0];
+
+    for (var i = 1; i < numbers.length; i++) {
+        if (numbers[i] > largest) {
+            largest = numbers[i];
+        }
+    }
+
+    resultElement.textContent = "The largest integer is: " + largest;
+}
+</script>
+
+<h2>Exer#13</h2>
+
+Enter three integers separated by spaces: <input type="text" id="numbers2">
+<button onclick="findSmallestInteger()">submit</button>
+<p id="result-2"></p>
+
+<script>
+function findSmallestInteger() {
+    var input = document.getElementById("numbers2").value.trim();
+    var numbersArray = input.split(" ").map(Number);
+
+    var resultElement = document.getElementById("result-2");
+
+    if (numbersArray.length !== 3 || numbersArray.includes(NaN)) {
+        resultElement.textContent = "Please enter three valid integers separated by spaces.";
+        return;
+    }
+
+    var smallest = Math.min.apply(null, numbersArray);
+
+    resultElement.textContent = "The smallest integer is: " + smallest;
+}
+</script>
+
+<h2>Exer#14</h2>
+
+Enter three integers separated by spaces: <input type="text" id="numbers3">
+<button onclick="calculateAverage()">submit</button>
+<p id="result-3"></p>
+
+<script>
+function calculateAverage() {
+    var input = document.getElementById("numbers3").value.trim();
+    var numbers = input.split(" ").map(Number);
+
+    var resultElement = document.getElementById("result-3");
+
+    if (numbers.length !== 3 || numbers.some(isNaN)) {
+        resultElement.textContent = "Please enter three valid integers separated by spaces.";
+        return;
+    }
+
+    var sum = numbers.reduce((total, num) => total + num, 0);
+    var average = sum / numbers.length;
+
+    resultElement.textContent = "The average of the three integers is: " + average.toFixed(2);
+}
+</script>
+
+<h2>Exer#15</h2>
+
+Enter a number to generate its multiplication table: <input type="number" id="numberInput">
+<button onclick="generateMultiplicationTable()">submit</button>
+<p id="result-4"></p>
+
+<script>
+function generateMultiplicationTable() {
+    var number = parseInt(document.getElementById("numberInput").value);
+    var resultElement = document.getElementById("result-4");
+    
+    if (isNaN(number) || number <= 0) {
+        resultElement.textContent = "Please enter a valid positive number.";
+        return;
+    }
+
+    var table = "";
+    for (var i = 1; i <= 10; i++) {
+        table += number + " x " + i + " = " + (number * i) + "<br>";
+    }
+
+    resultElement.innerHTML = table;
+}
+</script>
+
+</body>
+</html>

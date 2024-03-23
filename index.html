@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Exercises</title>
+</head>
+<body>
+
+  <h2>Exer#1</h2>
+
+<script>
+  let text1 = "Im,"
+  let text2 = "Seifer Aquino"
+  let result = text1.concat(text2) 
+  document.write(result)
+</script>
+
+<h2>Exer#2</h2>
+
+<h3>Please input your name:</h3>
+<input type="text" id="text">
+<input type="button" onclick="updateName()" value="submit">
+<p id="result">Hello!</p>
+
+<script>
+function updateName() {
+    var name = document.getElementById("text").value;
+    document.getElementById("result").textContent = "Hello! " + name;
+  }
+</script>
+
+<h2>Exer#3</h2>
+
+Input week number: <input type="text" id="weekInput">
+<input type="button" onclick="printDay()" value="submit">
+<p id="result-2">Output:</p>
+
+<script>
+function printDay() {
+    var weekNumber = document.getElementById("weekInput").value;
+    var resultElement = document.getElementById("result-2");
+    var daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+    if (weekNumber >= 1 && weekNumber <= 7) {
+        resultElement.textContent = "Output: " + daysOfWeek[weekNumber - 1];
+    } else {
+        resultElement.textContent = "Invalid week number. Please enter a number between 1 and 7.";
+    }
+}
+</script>
+
+
+<h2>Exer#4</h2>
+
+<h3>Enter a character:</h3>
+<input type="text" id="charInput">
+<button onclick="checkCharacter()">submit</button>
+<p id="result-3">Result:</p>
+
+<script>
+function checkCharacter() {
+    var character = document.getElementById("charInput").value.toLowerCase();
+    var resultElement = document.getElementById("result-3");
+
+    if (character.length !== 1 || !/[a-z]/.test(character)) {
+        resultElement.textContent = "Please enter a single alphabet character.";
+        return;
+    }
+
+    if (character === "a" || character === "e" || character === "i" || character === "o" || character === "u") {
+        resultElement.textContent = character + " is a vowel.";
+    }
+     else {
+        resultElement.textContent = character + " is a consonant.";
+    }
+}
+</script>
+
+<h2>Exer#5</h2>
+
+<h3>Enter your age:</h3>
+<input type="number" id="ageInput">
+<button onclick="checkEligibility()">submit</button>
+<p id="result-4">Result:</p>
+
+<script>
+function checkEligibility() {
+    var age = parseInt(document.getElementById("ageInput").value);
+    var result = document.getElementById("result-4");
+
+    if (age >= 18) {
+        result.textContent = "Congratulations! You are eligible to vote.";
+    } else {
+        result.textContent = "Sorry, you are not eligible to vote yet.";
+    }
+}
+</script>
+
+<h2>Exer#6</h2>
+
+<h3>Enter student's grade:</h3>
+<input type="number" id="gradeInput">
+<button onclick="checkRemarks()">submit</button>
+<p id="result-5">Remarks:</p>
+
+<script>
+function checkRemarks() {
+    var grade = parseInt(document.getElementById("gradeInput").value);
+    var resultElement = document.getElementById("result-5");
+
+    if (isNaN(grade) || grade < 0 || grade > 100) {
+        resultElement.textContent = "Please enter a valid grade between 0 and 100.";
+        return;
+    }
+
+    if (grade >= 96 && grade <= 100) {
+        resultElement.textContent = "Excellent";
+    } else if (grade >= 90 && grade <= 95) {
+        resultElement.textContent = "Very Satisfactory";
+    } else if (grade >= 84 && grade <= 89) {
+        resultElement.textContent = "Satisfactory";
+    } else if (grade >= 78 && grade <= 83) {
+        resultElement.textContent = "Fairly Satisfactory";
+    } else if (grade >= 75 && grade <= 77) {
+        resultElement.textContent = "Passed";
+    } else if (grade >= 70 && grade <= 74) {
+        resultElement.textContent = "Conditional Failure";
+    } else {
+        resultElement.textContent = "Failed";
+    }
+}
+</script>
+
+<h2>Exer#7</h2>
+
+<h3>Enter an integer:</h3>
+<input type="number" id="integerInput">
+<button onclick="analyzeInteger()">Analyze</button>
+<p id="result-6">Result:</p>
+
+
+<script>
+function analyzeInteger() {
+    var number = parseInt(document.getElementById("integerInput").value);
+    var resultElement = document.getElementById("result-6");
+
+    if (isNaN(number)) {
+        resultElement.textContent = "Please enter a valid integer.";
+        return;
+    }
+
+    if (number > 0) {
+        resultElement.textContent = "Positive";
+    } else if (number < 0) {
+        resultElement.textContent = "Negative";
+    } else {
+        resultElement.textContent = "Zero is neither positive nor negative.";
+    }
+
+    if (number % 2 === 0) {
+        resultElement.textContent += ", Even";
+    } else {
+        resultElement.textContent += ", Odd";
+    }
+}
+</script>
+
+<h2>Exer#8</h2>
+
+<p id="whileLoop"></p>
+
+<script>
+ var i = 0; 
+    var result1 = "";
+
+    while (i <= 15) {
+      result1 += i + "<br>";
+      i++;
+    }
+
+    document.getElementById("whileLoop").innerHTML = result1;
+</script>
+
+<h2>Exer#9</h2>
+
+<h3>Enter a number to cube:</h3>
+<input type="number" id="numberInput">
+<button onclick="displayCube()">submit</button>
+<p id="result-7">Result:</p>
+
+<script>
+function cubeNumber(num) {
+    return num ** 3;
+}
+
+function displayCube() {
+    var number = parseInt(document.getElementById("numberInput").value);
+    var resultElement = document.getElementById("result-7");
+
+    if (isNaN(number)) {
+        resultElement.textContent = "Please enter a valid number.";
+    } else {
+        var cubeResult = cubeNumber(number);
+        resultElement.textContent = "The cube of " + number + " is: " + cubeResult;
+    }
+}
+</script>
+
+<h2>Exer#10</h2>
+
+Enter first number:<input type="number" id="num1Input" placeholder="Enter first number"><br>
+Enter second number:<input type="number" id="num2Input" placeholder="Enter second number"><br>
+
+<button onclick="performAddition()">Add</button>
+<button onclick="performSubtraction()">Subtract</button>
+<button onclick="performMultiplication()">Multiply</button>
+<button onclick="performDivision()">Divide</button>
+
+<p id="result-8">Result:</p>
+
+
+<script>
+  function performAddition() {
+    performOperation(function(a, b) { return a + b; }, "Addition");
+}
+
+function performSubtraction() {
+    performOperation(function(a, b) { return a - b; }, "Subtraction");
+}
+
+function performMultiplication() {
+    performOperation(function(a, b) { return a * b; }, "Multiplication");
+}
+
+function performDivision() {
+    performOperation(function(a, b) { return a / b; }, "Division");
+}
+
+
+function performOperation(operation, operationName) {
+    var num1 = parseFloat(document.getElementById("num1Input").value);
+    var num2 = parseFloat(document.getElementById("num2Input").value);
+    var resultElement = document.getElementById("result-8");
+
+    if (isNaN(num1) || isNaN(num2)) {
+        resultElement.textContent = "Please enter valid numbers.";
+        return;
+    }
+
+    var result = operation(num1, num2);
+    resultElement.textContent = operationName + ": " + result;
+}
+</script>
+
+
+</body>
+</html>
